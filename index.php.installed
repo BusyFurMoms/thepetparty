@@ -1,0 +1,28 @@
+<?php
+/*****************************************************************
+*        DO NOT REMOVE                                           *
+*        =============                                           *
+*VetClinic Management Software                                   *
+*Copyrighted 2015-2016 by Michael Avila                          *
+*Distributed under the terms of the GNU General Public License   *
+*This program is distributed in the hope that it will be useful, *
+* but WITHOUT ANY WARRANTY; without even the implied warranty of *
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.           *
+*****************************************************************/
+session_start();
+$logFileName = "user";
+$headerTitle="USER LOG";
+require_once "includes/common.inc";
+setcookie('test', 1, time()+60);
+if(isset($_GET['cookies'])){
+    header('Location:/vetclinic/index.php?cookies=true');
+}
+$emplnumber = "";
+$errormsg = "";
+require_once "includes/os.inc";
+$user_os = getOS();
+setcookie("employeenumber", " ", time() + 20);
+delete_errormsg();
+$_SESSION["OS"] = $user_os;
+redirect("index1.php");
+?>
